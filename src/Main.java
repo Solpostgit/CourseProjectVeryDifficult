@@ -1,7 +1,14 @@
-public class Main {
- public static void main(String[] args) {
-    // EmployeeBook employeeBook = new EmployeeBook();
+import java.util.Arrays;
 
+public class Main {
+    public static void main(String[] args) {
+
+    }
+
+    //***** Повышенная сложность *****
+
+
+}
 
      /*
       Employee[] employees = new Employee[10];
@@ -17,5 +24,4 @@ public class Main {
       employees[8] = new Employee("Nikolaeva Olga Anatolyevna", 4, 91000);
       employees[9] = new Employee("Denisov Pavel Ivanovich", 5, 98000);
 */
- }
-}
+

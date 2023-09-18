@@ -2,24 +2,24 @@ import java.util.Arrays;
 
 public class EmployeeBook {
     public static void main(String[] args) {
-        Employee[] storage = new Employee[10]; //поле типа Employee[10]
-
-        storage[0] = new Employee("Ivanov Ivan Ivanovich", 3, 91000);
-        storage[1] = new Employee("Petrov Petr Petrovich", 2, 100000);
-        storage[2] = new Employee("Sidorov Denis Sergeevich", 4, 95000);
-        storage[3] = new Employee("Ivanova Anna Borisovna", 1, 93000);
-        storage[4] = new Employee("Svetlaya Irina Pavlovna", 5, 90000);
-        storage[5] = new Employee("Borisov Maksim Alekseevich", 3, 97000);
-        storage[6] = new Employee("Alekseev Sergey Nikolaevich", 1, 92000);
-        storage[7] = new Employee("Maksimova Alla Nikolaevna", 2, 94000);
-        storage[8] = new Employee("Nikolaeva Olga Anatolyevna", 4, 91000);
-        storage[9] = new Employee("Denisov Pavel Ivanovich", 5, 98000);
+        EmployeeBook[] storage = new EmployeeBook[10]; //поле типа EmployeeBook[10]
+        storage[0] = new EmployeeBook("Ivanov Ivan Ivanovich", 3, 91000);
+        storage[1] = new EmployeeBook("Petrov Petr Petrovich", 2, 100000);
+        storage[2] = new EmployeeBook("Sidorov Denis Sergeevich", 4, 95000);
+        storage[3] = new EmployeeBook("Ivanova Anna Borisovna", 1, 93000);
+        storage[4] = new EmployeeBook("Svetlaya Irina Pavlovna", 5, 90000);
+        storage[5] = new EmployeeBook("Borisov Maksim Alekseevich", 3, 97000);
+        storage[6] = new EmployeeBook("Alekseev Sergey Nikolaevich", 1, 92000);
+        storage[7] = new EmployeeBook("Maksimova Alla Nikolaevna", 2, 94000);
+        storage[8] = new EmployeeBook("Nikolaeva Olga Anatolyevna", 4, 91000);
+        storage[9] = new EmployeeBook("Denisov Pavel Ivanovich", 5, 98000);
 
         System.out.println();
         System.out.println(Arrays.toString(storage)); //список сотрудников со всеми имеющимися данными
         System.out.println();
         System.out.println("*** Повышенная сложность ***");
         System.out.println();
+
         indexSalary(storage, 1.1); //индексация зарплаты на 10%
         System.out.println();
         minSalaryDepartment(storage, 5); //минимальная зарплата в отделе
@@ -36,11 +36,56 @@ public class EmployeeBook {
         System.out.println();
         choiceNumber(storage, 104000); //повышенная сложность 3. зарплата меньше/больше indexSalary
         System.out.println();
+
+
     }
 
-    //***** Повышенная сложность *****
+    static int count = 1;
+    private int id;
+    private String fullName;
+    private int department;
+    private double salary;
 
-    private static void indexSalary(Employee[] arr, double index) { //индексация зарплат
+    public EmployeeBook(String fullName, int department, double salary) {
+
+        this.id = count;
+        this.fullName = fullName;
+        this.department = department;
+        this.salary = salary;
+        count++;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String toString() {
+        return "ID:" + this.id + " " + this.fullName + " " + " Отдел " + this.department + " Зарплата " + this.salary;
+    }
+
+
+    public static void indexSalary(EmployeeBook[] arr, double index) { //индексация зарплат
         double indexSal = 0;
         for (int i = 0; i < arr.length; i++) {
             indexSal = arr[i].getSalary() * index;
@@ -49,7 +94,7 @@ public class EmployeeBook {
         }
     }
 
-    private static void minSalaryDepartment(Employee[] arr, int department) {
+    public static void minSalaryDepartment(EmployeeBook[] arr, int department) {
         int minIndex = 0;
         double minSal = arr[1].getSalary();
         for (int i = 0; i < arr.length; i++) {
@@ -63,7 +108,7 @@ public class EmployeeBook {
         System.out.println("Сотрудник с минимальной зарплатой в " + department + " отделе " + arr[minIndex]);
     }
 
-    private static void maxSalaryDepartment(Employee[] arr, int department) {
+    public static void maxSalaryDepartment(EmployeeBook[] arr, int department) {
         int maxIndex = 0;
         double maxSal = arr[1].getSalary();
         for (int i = 0; i < arr.length; i++) {
@@ -77,7 +122,7 @@ public class EmployeeBook {
         System.out.println("Сотрудник с максимальной зарплатой в " + department + " отделе " + arr[maxIndex]);
     }
 
-    private static void sumSalaryDepartment(Employee[] arr, int department) {
+    public static void sumSalaryDepartment(EmployeeBook[] arr, int department) {
         double sumSalaryDep = 0; //сумма зарплат в отделе
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getDepartment() == department) {
@@ -87,7 +132,7 @@ public class EmployeeBook {
         System.out.println("Сумма затрат на зарплату по " + department + " отделу " + sumSalaryDep);
     }
 
-    private static void midleSalaryDepartment(Employee[] arr, int department) {
+    public static void midleSalaryDepartment(EmployeeBook[] arr, int department) {
         int indexEmployeeDep = 0; //количество сотрудников в отделе
         double sumSalaryDep = 0; //сумма зарплат в отделе
         double midleSalaryDep = 0; //средняя зарплата в отделе
@@ -101,7 +146,7 @@ public class EmployeeBook {
         System.out.println("Средняя зарплата по " + department + " отделу " + midleSalaryDep);
     }
 
-    private static void indexSalaryDepartment(Employee[] arr, int department, double indexSal) {
+    public static void indexSalaryDepartment(EmployeeBook[] arr, int department, double indexSal) {
         double indexSalDep = 0; //индексированная зарплата
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getDepartment() == department) {
@@ -112,7 +157,7 @@ public class EmployeeBook {
         }
     }
 
-    private static void listEmployeeDepartment(Employee[] arr, int department) {
+    public static void listEmployeeDepartment(EmployeeBook[] arr, int department) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getDepartment() == department) {
                 System.out.println("ID:" + arr[i].getId() + " " + arr[i].getFullName() + " " + arr[i].getSalary());
@@ -121,7 +166,7 @@ public class EmployeeBook {
         }
     }
 
-    private static void choiceNumber(Employee[] arr, double indexSalary) {
+    public static void choiceNumber(EmployeeBook[] arr, double indexSalary) {
         System.out.println("Зарплата меньше " + indexSalary);
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getSalary() < indexSalary) { //зарплата меньше indexSalary
@@ -135,4 +180,6 @@ public class EmployeeBook {
             }
         }
     }
+
+
 }
