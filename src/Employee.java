@@ -3,9 +3,9 @@ public class Employee {
     private int id;
     private String fullName;
     private int department;
-    private int salary;
+    private double salary;
 
-    public Employee(String fullName, int department, int salary) {
+    public Employee(String fullName, int department, double salary) {
 
         this.id = count;
         this.fullName = fullName;
@@ -18,7 +18,7 @@ public class Employee {
         return id;
     }
 
-    public String getSurname() {
+    public String getFullName() {
         return fullName;
     }
 
@@ -26,7 +26,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -34,7 +34,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
