@@ -1,18 +1,14 @@
 public class Employee {
     static int count = 1;
     private int id;
-    private String surname;
-    private String name;
-    private String patronymic;
+    private String fullName;
     private int department;
     private int salary;
 
-    public Employee(String surname, String name, String patronymic, int department, int salary) {
+    public Employee(String fullName, int department, int salary) {
 
         this.id = count;
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
+        this.fullName = fullName;
         this.department = department;
         this.salary = salary;
         count++;
@@ -23,15 +19,7 @@ public class Employee {
     }
 
     public String getSurname() {
-        return surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
+        return fullName;
     }
 
     public int getDepartment() {
@@ -51,6 +39,6 @@ public class Employee {
     }
 
     public String toString() {
-        return "ID:" + this.id + " " + this.surname + " " + this.name + " " + this.patronymic + " " + " Отдел " + this.department + " Зарплата " + this.salary;
+        return "ID:" + this.id + " " + this.fullName + " " + " Отдел " + this.department + " Зарплата " + this.salary;
     }
 }
